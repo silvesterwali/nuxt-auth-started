@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar :clipped-left="clipped" fixed tile dense elevate-on-scroll app>
+    <v-app-bar fixed tile dense elevate-on-scroll app>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn tile text small class="mr-1" :exact="true" to="/login">
@@ -13,7 +13,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-footer :absolute="!fixed" app>
+    <v-footer :absolute="false" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>

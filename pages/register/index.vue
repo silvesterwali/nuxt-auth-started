@@ -1,13 +1,8 @@
 <template>
-  <div class="d-flex" style="min-height: 450px">
+  <div class="d-flex" style="min-height: 400px">
     <v-row justify="center" align="center" class="mx-auto align-self-center">
       <v-col cols="12" sm="8" md="5">
-        <AuthForm
-          :is-register="false"
-          :loading="loading"
-          :errors="errors"
-          @submit="login"
-        />
+        <AuthForm :is-register="true" :loading="loading" :errors="errors" />
       </v-col>
     </v-row>
   </div>
@@ -23,11 +18,6 @@ export default {
       loading: false,
       errors: null,
     }
-  },
-  methods: {
-    login(credential) {
-      alert(credential.email)
-    },
   },
 }
 </script>
