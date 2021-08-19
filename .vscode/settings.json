@@ -6,5 +6,7 @@
   },
   "eslint.validate": ["javascript", "vue"],
   "eslint.run": "onSave",
-  "vetur.format.defaultFormatter.html": "prettier"
+  "vetur.format.defaultFormatter.html": "prettier",
+  "[vue]": { "editor.formatOnSave": true },
+  "[javascript]": { "editor.formatOnSave": true }
 }
