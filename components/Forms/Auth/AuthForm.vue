@@ -107,7 +107,7 @@ export default {
   computed: {
     passwordMatch() {
       if (this.credential === null) {
-        return false
+        return null
       }
       if (this.credential.password !== this.credential.password_confirmation) {
         return 'Password not match'

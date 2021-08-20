@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-
+require('dotenv').config()
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -18,10 +18,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/axios.js', '~/plugins/axios-port.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: false,
+  components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -29,6 +29,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    ['@nuxtjs/dotenv', { systemvars: true }],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -40,7 +41,12 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? process.env.PRODUCTION_URL
+        : process.env.DEVELOPMENT_URL,
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -72,6 +78,7 @@ export default {
       },
     },
   },
+  serverMiddleware: [{ path: '/api', handler: '~/api/app.js' }],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
