@@ -1,6 +1,6 @@
 {
   "app router": {
-    "description": "Router snippet for express backend",
+    "description": "Router snippet for express backend.",
     "prefix": "app router",
     "scope": "javascript",
     "body": [
@@ -13,17 +13,17 @@
       "",
       "",
       "",
-      "router.get('/','controller.index')",
-      "router.post('/','controller.store')",
-      "router.get('/:id','controller.show')",
-      "router.put('/:id','controller.update')",
-      "router.delete('/:id','controller.index')",
+      "router.get('/',controller.index)",
+      "router.post('/',controller.store)",
+      "router.get('/:id',controller.show)",
+      "router.put('/:id',controller.update)",
+      "router.delete('/:id',controller.destroy)",
       "",
       "module.exports=router"
     ]
   },
   "app controller": {
-    "description": "Controller snippet for express backend",
+    "description": "Controller snippet for express backend.",
     "prefix": "app controller",
     "scope": "javascript",
     "body": [
@@ -77,6 +77,62 @@
       "* @async",
       "**/",
       "exports.destroy=(req,res)=>{}"
+    ]
+  },
+
+  "app services": {
+    "description": "Services Snippet for front end.",
+    "prefix": "app service",
+    "scope": "javascript",
+    "body": [
+      "/**",
+      "* @copyright ${CURRENT_YEAR}",
+      "* sevices endpoint for ${TM_FILENAME_BASE/(.*)/${1:/locase}/}",
+      "*",
+      "**/",
+      "import ApiService from '~/services/ApiServices.js'",
+      "// define the api backend endpoint here",
+      "const $urlEndpoint=`${TM_FILENAME_BASE}`.toLowerCase()",
+      "/**",
+      "* fetch${TM_FILENAME_BASE}s - axios endpoint to get all ${TM_FILENAME_BASE} resources ",
+      "*",
+      "**/",
+      "export const fetch${TM_FILENAME_BASE}s=async()=>{",
+      "\treturn await ApiService.get(`${$urlEndpoint}`)",
+      "}",
+      "/**",
+      "* store${TM_FILENAME_BASE} - axios endpoint to store ${TM_FILENAME_BASE} ",
+      "*",
+      "* @param {Object} payload",
+      "**/",
+      "export const store${TM_FILENAME_BASE}=async($payload)=>{",
+      "\treturn await ApiService.post(`${$urlEndpoint}`,$payload)",
+      "}",
+      "/**",
+      "* fetch${TM_FILENAME_BASE} - axios endpoint to get specific ${TM_FILENAME_BASE} ",
+      "*",
+      "* @param {String} -id",
+      "**/",
+      "export const fetch${TM_FILENAME_BASE}=async($id)=>{",
+      "\treturn await ApiService.get(`${$urlEndpoint}/${$id}`)",
+      "}",
+      "/**",
+      "* update${TM_FILENAME_BASE} - axios endpoint to update specific ${TM_FILENAME_BASE} ",
+      "*",
+      "* @param {String} -id",
+      "* @param {Object} -payload",
+      "**/",
+      "export const update${TM_FILENAME_BASE}=async($id,$payload)=>{",
+      "\treturn await ApiService.put(`${$urlEndpoint}/${$id}`,$payload)",
+      "}",
+      "/**",
+      "* destroy${TM_FILENAME_BASE} - axios endpoint to delete specific ${TM_FILENAME_BASE} ",
+      "*",
+      "* @param {String} -id",
+      "**/",
+      "export const destroy${TM_FILENAME_BASE}=async($id)=>{",
+      "\treturn await ApiService.delete(`${$urlEndpoint}/${$id}`)",
+      "}"
     ]
   }
 }

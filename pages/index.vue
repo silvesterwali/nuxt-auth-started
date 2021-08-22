@@ -6,7 +6,7 @@
   </v-row>
 </template>
 <script>
-import { welcome } from '~/services/api/'
+import { welcome } from '~/services/apis/'
 export default {
   async asyncData() {
     const { data } = await welcome()
